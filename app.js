@@ -8,6 +8,9 @@ app.use(cors());
 app.use(methodOverride());
 const log=console.log;
 
+let PORT = process.env.PORT || 3000;
+
+
 let users = ['homero', 'bart', 'lisa', 'marge', 'maggie'];
 
 
@@ -31,6 +34,6 @@ app.delete('/users/delete/:nombre', (req, res) => {
 	res.send('Usuario eliminado');
 });
 
-app.listen(5000,()=>{
+app.listen(PORT,()=>{
     log("start server");
 })
