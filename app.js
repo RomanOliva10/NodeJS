@@ -1,17 +1,26 @@
 const express = require('express');
 const cors = require('cors');
 const methodOverride = require('method-override');
+const path = require('path');
 
+const log=console.log;
 
 const app = express();
 app.use(cors());
 app.use(methodOverride());
-const log=console.log;
+app.use(express.urlencoded({extended:true}))
+app.use(express.json());
+
 
 let PORT = process.env.PORT || 3000;
 
 
 let users = ['homero', 'bart', 'lisa', 'marge', 'maggie'];
+
+
+app.get("/",(req, res) => {
+    res.sendFile(path.join(__dirname,"/views/index.html"));
+});
 
 
 app.get('/users', (req, res) => {
